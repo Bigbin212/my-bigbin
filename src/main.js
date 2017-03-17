@@ -12,7 +12,7 @@ import Test1 from './views/test1'
 
 const routes = [
   {
-    path: '/login',
+    path: '/',
     component: Login
   },
   {

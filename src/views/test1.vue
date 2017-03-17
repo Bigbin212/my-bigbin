@@ -25,6 +25,13 @@
         <p>{{ input_text }}</p>   <!-- 实际显示的值 -->
     </div>
 
+    <div>
+      <input type="text" class="input-text" v-on:keyup.enter="consoletext" v-model="item_"/>
+      <ul>
+        <li v-for="(item, i) in items" @click="remove(i)">{{ item }}</li>
+      </ul>
+    </div>
+
   </div>
 </template>
 <script>
@@ -39,12 +46,22 @@
           { text: '2、学习Vue' },
           { text: '3、整个牛逼项目' }
         ],
-        input_text: '整个项目'
+        input_text: '整个项目',
+        item_: '',
+        items: []
       }
     },
     methods: {
       li_click (text) {
         alert(text)
+      },
+      consoletext () {
+        let val = this.item_
+        this.items.push(val)
+        this.item_ = ''
+      },
+      remove (i) {
+        this.items.splice(i, 1)
       }
     }
   }

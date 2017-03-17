@@ -54,3 +54,32 @@ li {
   border: 1px solid #bce4f7;/*ued色号:19*/
   background: #ffffff none repeat scroll 0 0;
 }
+/*!****************************checkbox按钮样式**********************************/
+
+/* checkbox样式 */
+.common-checkbox{
+  float:left;
+  display:block;
+  height:14px;
+  line-height: 14px;
+  width:14px;
+  background: url('./images/icon-sprites.png') no-repeat -84px -314px;
+}
+
+/* checkbox未选中样式 */
+.common-checkbox-unselect{
+  background: url('./images/icon-sprites.png') no-repeat -84px -314px;
+}
+
+/* checkbox选中样式 */
+.common-checkbox-select{
+  background: url('./images/icon-sprites.png') no-repeat -118px -314px;
+}
+/* checkbox label样式 */
+.common-checkbox-label {
+  float:left;
+  margin-left:5px;
+  cursor:pointer;
+  height:14px;
+  line-height:14px;
+}
