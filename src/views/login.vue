@@ -78,7 +78,7 @@
     background:url('./../assets/login/lock.png') no-repeat;
     padding: 10px 10px;
     position: absolute;
-    top: 12px;
+    top: 10px;
     left: 40px;
   }
 </style>
