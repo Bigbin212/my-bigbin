@@ -1,0 +1,56 @@
+/*! *************************全局设置************************************************/
+
+html,body,div,dl,dt,dd,object,iframe,ul,ol,li,h1,h2,h3,h4,h5,h6,
+input,button,textarea,p,blockquote,th,td {
+  margin: 0;
+  padding: 0;
+}
+
+body,input,button,textarea {
+  font: 14px/1 "Microsoft Yahei", 微软雅黑, Arial;
+  font-size: 14px;
+  font-weight:normal;
+  color:#444444;/*ued色号:23*/
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+  color: #787878;
+  overflow: hidden;
+  font-size: 14px;
+  width:100%;
+  height:100%;
+}
+
+input, button, textarea {
+  border:1px solid #d1d1d1;/*ued色号:15*/
+  outline: none;
+}
+
+img {
+  border:none;
+}
+
+li {
+  list-style: none;
+}
+/*************************************************************************************/
+.input-text {
+  font-size:14px;
+  font-family: "Microsoft Yahei", 微软雅黑, Arial;
+  background: #f9f9f9 none repeat scroll 0 0;/*ued色号:16*/
+  border: 1px solid #d1d1d1;
+  border-radius: 2px;
+  color: #787878;
+  height: 28px;
+  line-height: 28px;
+  padding-bottom: 1px;
+  padding-left: 10px;
+  padding-top: 1px;
+}
+
+.input-text:focus {
+  border: 1px solid #bce4f7;/*ued色号:19*/
+  background: #ffffff none repeat scroll 0 0;
+}
