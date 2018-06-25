@@ -3,12 +3,14 @@
 import Vue from 'vue'
 import App from './App'
 import VueRouter from 'vue-router'
+import axios from 'axios'
 // import router from './router'
 Vue.use(VueRouter)
+// Vue.use(require('vue-moment')) // 全局引用插件
 Vue.config.productionTip = false
-
-import Login from './views/login'
-import Test1 from './views/test1'
+Vue.prototype.$axios = axios
+import Login from './views/vue/login.vue'
+import Test1 from './views/vue/test1.vue'
 
 const routes = [
   {

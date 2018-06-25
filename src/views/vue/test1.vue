@@ -14,7 +14,7 @@
 
     <div class="center">
       <ul>
-        <li v-for="todo in todos" v-bind:title="todo.text" @click="li_click(todo.text)"> <!-- vue的遍历方法1 -->
+        <li v-for="todo in todos" v-bind:title="todo.text" :key="todo" @click="li_click(todo.text)"><!-- vue的遍历方法1 -->
           {{ todo.text }}
         </li>
       </ul>
@@ -28,17 +28,18 @@
     <div>
       <input type="text" class="input-text" v-on:keyup.enter="consoletext" v-model="item_"/>
       <ul>
-        <li v-for="(item, i) in items" @click="remove(i)">{{ item }}</li>
+        <li v-for="(item, i) in items" @click="remove(i)" :key="i">{{ item }}</li>
       </ul>
     </div>
 
   </div>
 </template>
 <script>
+  import { formatDate } from './../../api/dateUtil.js' // 引用js
   export default{
     data () {
       return {
-        title_message: '页面加载于 ' + new Date(),
+        title_message: '页面加载于 ' + formatDate(new Date(), 'yyyy-MM-dd hh:mm:ss'),
         seen: true,
         message: '现在你看到我了!',
         todos: [
