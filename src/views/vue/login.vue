@@ -13,7 +13,7 @@
         </div>
         <!-- padding:上 右 下 左内边距 -->
         <div style="padding: 10px 0px 1px 35px; position: relative;;">
-          <span style="float: left; margin:1px 4px 0 0;" class="common-checkbox" ></span>
+          <span style="float: left; margin:1px 4px 0 0;" class="common-checkbox" v-bind:class="flag ? 'common-checkbox-unselect':'common-checkbox-select'"  @click='switchChange'></span> <!--v-show='flag==true' -->
           <span style="float: left; margin:2px 0 0 2px;font-size:13px;">记住用户凭证 </span>
           <span style="float: left; margin:4px 0 0 2px;" id="tsy"></span>
         </div>
@@ -36,30 +36,62 @@
 export default {
   data () {
     return {
+      flag: true,
       username: null,
       password: null
     }
   },
   methods: {
     loginForm () { /* 页面直接跳转传参 */
-      if (this.username === null || this.password === null) {
+      const self = this
+      if (self.username === null || self.password === null) {
         return
       }
-      var path = 'www.baidu.com'
-      this.$axios({
-        method: 'post',
-        url: path,
-        data: {
-          username: this.username,
-          password: this.password
-        },
-        transformRequest: [function (data) {
-          console.log(data)
-        }],
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
+      // var params = new URLSearchParams()
+      // params.append('username', this.username)
+      // params.append('password', this.password)
+      // params.append('xh', '10010')
+      // let postData = {
+      //   'username': this.username,
+      //   'password': this.password,
+      //   'xh': '10010'
+      // }
+      // this.$axios.post('/domain/ceshi', postData)
+      //   .then(function (response) {
+      //     console.log(response)
+      //   })
+      //   .catch(function (error) {
+      //     console.log(error)
+      //   })
+      self.$axios.get('/domain/ceshi', {params: {
+        'username': this.username,
+        'password': this.password,
+        'xh': '10010'
+      }
+      }).then(function (res) {
+        let flag = res.data.flag
+        if (!flag) {
+          return
         }
-      })
+        self.$router.push({
+          path: '/test1',
+          query: {
+            username: self.username,
+            password: self.password
+          }
+        })
+      }).catch(function () {})
+      // this.$axios({
+      //   method: 'post',
+      //   url: '/domain/ceshi',
+      //   data: params,
+      //   transformRequest: [function (data) {
+      //     console.log(data)
+      //   }],
+      //   headers: {
+      //     'Content-Type': 'application/x-www-form-urlencoded'
+      //   }
+      // })
       // this.$router.push({
       //   path: '/test1',
       //   query: {
@@ -67,6 +99,10 @@ export default {
       //     password: this.password
       //   }
       // })
+    },
+    switchChange () {
+      this.flag = !this.flag
+      console.log(this.flag)
     }
   }
 }
