@@ -21,7 +21,7 @@
       <div class="login_bottom">
         <div>
           <span style="float: left;">
-            <a href=".#/test1"  title="客官您忘记密码吗?">忘记密码?</a>
+            <a href="test1"  title="客官您忘记密码吗?">忘记密码?</a>
           </span>
           <span style="float: right;">
             <a title="点击进入注册页面">注册</a>
@@ -74,10 +74,14 @@ export default {
           return
         }
         self.$router.push({
-          path: '/test1',
-          query: {
-            username: self.username,
-            password: self.password
+          // path: '/test1',
+          // query: {
+          //   username: self.username,
+          //   password: self.password
+          // }
+          name: 'test1',
+          params: {
+            username: self.username
           }
         })
       }).catch(function () {})

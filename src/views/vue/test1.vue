@@ -1,6 +1,10 @@
 <template>
   <div>
     <div style="height: 35px;">
+      <div>上一页传参:{{username}}</div>
+    </div>
+
+    <div style="height: 35px;">
       <span v-bind:title="title_message">
         鼠标悬停几秒钟查看此处动态绑定的提示信息！
       </span>
@@ -26,6 +30,7 @@
     </div>
     <div style="margin-top:2px;margin-bottom:3px;">
      <input type="botton" class="btn" v-on:click="showMessage()" value="点击试试" readonly/>
+     <input type="botton" class="btn" v-on:click="backSr()" value="返回上页" readonly/>
     </div>
     <div>
       <input type="text" class="input-text" v-on:keyup.enter="consoletext" v-model="item_"/>
@@ -51,9 +56,18 @@
         ],
         input_text: '整个项目',
         item_: '',
-        items: []
+        items: [],
+        username: ''
       }
     },
+    created () {
+      this.username = this.$route.params.username
+      console.log(this.username)
+      // this.showMessage()
+    },
+    mounted: {},
+    watch: {},
+    computed: {},
     methods: {
       li_click (text) {
         alert(text)
@@ -68,12 +82,15 @@
       },
       showMessage () {
         this.$axios.get('static/resources/test.json').then(response => {
-          console.log(response.data)
+          // console.log(response.data)
           alert(JSON.stringify(response.data))
         },
         response => {
           console.log('数据加载失败')
         })
+      },
+      backSr () {
+        this.$router.go(-1)
       }
     }
   }

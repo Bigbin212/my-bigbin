@@ -18,12 +18,14 @@ const routes = [
     component: Login
   },
   {
-    path: '/test1',
+    name: 'test1',
+    path: '/test1', // 'test1/:username'
     component: Test1
   }
 ]
 const router = new VueRouter({
-  routes
+  routes,
+  mode: 'history'
 })
 const app = new Vue({
   router,
