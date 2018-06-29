@@ -47,7 +47,7 @@
     data () {
       return {
         title_message: '页面加载于 ' + formatDate(new Date(), 'yyyy-MM-dd hh:mm:ss'),
-        seen: true,
+        seen: false,
         message: '现在你看到我了!',
         todos: [
           { text: '1、学习JavaScript' },
@@ -61,13 +61,27 @@
       }
     },
     created () {
+      console.log('created 作用开始' + formatDate(new Date(), 'yyyy-MM-dd hh:mm:ss.S'))
       this.username = this.$route.params.username
-      console.log(this.username)
-      // this.showMessage()
     },
-    mounted: {},
-    watch: {},
-    computed: {},
+    mounted: function () {
+      console.log('mounted 作用开始' + formatDate(new Date(), 'yyyy-MM-dd hh:mm:ss.S'))
+    },
+    watch: {
+      input_text: function (newInput) {
+        console.log(newInput)
+      }
+    },
+    // computed: { // 计算属性
+    //   input_text: {
+    //     get: function () {
+    //       return '测试'
+    //     },
+    //     set: function (v) {
+    //       this.input_text = v
+    //     }
+    //   }
+    // },
     methods: {
       li_click (text) {
         alert(text)

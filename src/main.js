@@ -24,8 +24,8 @@ const routes = [
   }
 ]
 const router = new VueRouter({
-  routes,
-  mode: 'history'
+  routes
+  // mode: 'history' // 默认为hash
 })
 const app = new Vue({
   router,

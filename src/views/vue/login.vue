@@ -13,7 +13,7 @@
         </div>
         <!-- padding:上 右 下 左内边距 -->
         <div style="padding: 10px 0px 1px 35px; position: relative;;">
-          <span style="float: left; margin:1px 4px 0 0;" class="common-checkbox" v-bind:class="flag ? 'common-checkbox-unselect':'common-checkbox-select'"  @click='switchChange'></span> <!--v-show='flag==true' -->
+          <span style="float: left; margin:1px 4px 0 0;" class="common-checkbox" v-bind:class="flag ? 'common-checkbox-unselect':'common-checkbox-select'"  v-on:click="switchChange()"></span> <!--v-show='flag==true' -->
           <span style="float: left; margin:2px 0 0 2px;font-size:13px;">记住用户凭证 </span>
           <span style="float: left; margin:4px 0 0 2px;" id="tsy"></span>
         </div>
@@ -21,7 +21,8 @@
       <div class="login_bottom">
         <div>
           <span style="float: left;">
-            <a href="test1"  title="客官您忘记密码吗?">忘记密码?</a>
+            <router-link to="test1"  title="客官您忘记密码吗?">忘记密码?</router-link>
+            <!-- <a v-link="{ name: 'test1' }" title="客官您忘记密码吗?">忘记密码?</a> -->
           </span>
           <span style="float: right;">
             <a title="点击进入注册页面">注册</a>
@@ -36,7 +37,7 @@
 export default {
   data () {
     return {
-      flag: true,
+      flag: false,
       username: null,
       password: null
     }
